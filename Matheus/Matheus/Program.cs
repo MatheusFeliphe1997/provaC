@@ -15,6 +15,9 @@ app.MapPost("/api/funcionario/cadastrar", ([FromBody] Funcionario funcionario, [
   return Results.Created($"/api/funcionario/{funcionario.Id}", funcionario);
 });
 
-
+app.MapGet("/api/funcionario/listar", ([FromServices] AppDataContext ctx) =>
+{
+    return Results.Ok(ctx.Funcionarios.ToList());
+});
 
 app.Run();
